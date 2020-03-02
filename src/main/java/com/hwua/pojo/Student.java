@@ -1,7 +1,6 @@
 package com.hwua.pojo;
 
 public class Student {
-    public void aa(){
-        System.out.println("");
-    }
+    public void aa(){}
+    System.out.print("");
 }
