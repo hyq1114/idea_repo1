@@ -66,4 +66,8 @@ public class UserController {
         userService.addUser(user);
         return "redirect:/users";
     }
+
+    public void aa(){
+        System.out.println("啦啦啦");
+    }
 }
