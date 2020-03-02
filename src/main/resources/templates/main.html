@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Title</title>
+    <script type="text/javascript" th:src="@{/webjars/jquery/3.4.1/jquery.js}"></script>
+    <script>
+        $(function () {
+            $(".btn_del").click(function () {
+                var id=$(this).attr("userid");
+                $("#dataForm").attr("method","post");
+                $("#dataForm").attr("action","user/"+id);
+                $("#transfer").attr("value","delete");
+                $("#dataForm").submit();//提交表单
+            })
+
+            $(".btn_update").click(function () {
+                var id=$(this).attr("userid");
+                $("#dataForm").attr("method","get");
+                $("#dataForm").attr("action","user/"+id);
+                $("#dataForm").submit();//提交表单
+            })
+        })
+    </script>
+</head>
+<body>
+<div th:replace="~{menu::#welcome}"></div>
+<table width="50%" border="1">
+    <thead>
+    <tr>
+        <th>学号</th>
+        <th>名字</th>
+        <th>密码</th>
+        <th>邮箱</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody id="tbody">
+        <tr th:each="user:${users}">
+            <td th:text="${user.id}"></td>
+            <td>[[${user.name}]]</td>
+            <td>[[${user.pwd}]]</td>
+            <td>[[${user.email}]]</td>
+            <td>
+                <!--自定义给按钮添加属性,key:userid value:id-->
+                <input type="button" class="btn_del" th:attr="userid=${user.id}" value="删除">
+                <input type="button" class="btn_update" th:attr="userid=${user.id}" value="更新">
+            </td>
+        </tr>
+    </tbody>
+</table>
+<br>
+<form action="" method="post" id="dataForm">
+     <input type="hidden" name="_method" id="transfer" value="">
+</form>
+<a href="#" th:href="@{/update_add.html}">添加学员</a>
+
+</body>
+</html>

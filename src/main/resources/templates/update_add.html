@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:if="${user==null}">添加学员</title>
+    <title th:if="${user!=null}">更新学员</title>
+</head>
+<body>
+<div th:replace="~{menu::#welcome}"></div>
+<form action=""  th:action="@{/user}" method="post">
+    <input type="hidden" name="_method" value="put" th:if="${user!=null}">
+    学号:<input type="text" name="id" th:value="${user==null?'':user.id}" th:readonly="${user!=null}"><br>
+    姓名:<input type="text" name="name" th:value="${user==null?'':user.name}"><br>
+    密码:<input type="text" name="pwd" th:value="${user==null?'':user.pwd}"><br>
+    邮箱:<input type="text" name="email" th:value="${user==null?'':user.email}"><br>
+    <button type="submit" th:if="${user==null}">添加学员</button>
+    <button type="submit" th:if="${user!=null}">更新学员</button>
+</form>
+</body>
+</html>

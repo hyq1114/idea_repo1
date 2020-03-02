@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>[[#{login.title}]]</title>
+</head>
+<body>
+<form action="#" th:action="@{/user/login}" th:name="loginForm" method="get" th:method="post">
+    <div id="info" th:if="${not #strings.isEmpty(info)}">[[${info}]]</div>
+    [[#{login.username}]]:<input type="text" name="name"><br>
+    [[#{login.password}]]:<input type="text" name="pwd"><br>
+    <button type="submit">[[#{login.btn}]]</button><br>
+</form>
+<a href="#" th:text="#{login.zh}" th:href="@{index.html(lan='zh_CN')}"></a>&nbsp;&nbsp;&nbsp;<a href="#" th:text="#{login.en}" th:href="@{index.html(lan='en_US')}"></a>
+</body>
+</html>
